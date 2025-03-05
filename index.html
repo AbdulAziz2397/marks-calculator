@@ -8,7 +8,7 @@
         rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Marks Calculator</title>
     <style>
 
 *{
@@ -77,6 +77,7 @@ button{
     font-size: 15px;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.452);
+    color: rgba(0, 0, 0, 0.589);
 }
 
 
@@ -96,9 +97,9 @@ button{
         <button type="button" onclick="getValue()">Submit</button>
 
 
-        <h1 class="output" id="total" placeholder="Total obtained marks is:"></h1>
-        <h1 class="output" id="percentage" placeholder="percentage is:"></h1>
-        <h1 class="output" id="grade" placeholder="Grade is:"></h1>
+        <h1 class="output" id="total" placeholder="Total obtained marks is:">Total obtained marks is:</h1>
+        <h1 class="output" id="percentage" placeholder="percentage is:">Percentage is:</h1>
+        <h1 class="output" id="grade" placeholder="Grade is:">Grade is:</h1>
     </form>
 
     <script>
@@ -117,18 +118,34 @@ function getValue() {
     var comp = Number(document.getElementById("computer").value) || 0;
 
     var total = phy + mth + ur + eng + chem + comp;
-    var percentage = (total/600)* 100;
-    document.getElementById("total").innerText = total;
-    document.getElementById("percentage").innerText = percentage + "%";
+    var percentage = ((total/600)* 100).toFixed(2);
+    document.getElementById("total").innerText = "Total obtained marks is: " + total;
+    document.getElementById("percentage").innerText = "Percentage is: " + percentage + "%";
 
 
     if (percentage > 100 || percentage < 0){
-        document.getElementById("grade").innerText = "You Entered Invalid marks";
+        document.getElementById("grade").innerText = "You Entered Invalid marks!!";
+        document.getElementById("percentage").innerText = "You Entered Invalid marks!!";
+        document.getElementById("total").innerText = "You Entered Invalid marks!!";
     }
-    else if (percentage > 84 || percentage <= 100){
-        document.getElementById("grade").innerText = "ممتاز";
+    else if (percentage >= 85){
+        document.getElementById("grade").innerText = "Grade is:" + " ممتاز";
     }
-
+    else if (percentage > 74){
+        document.getElementById("grade").innerText = "Grade is:" + " جید جداً";
+    }
+    else if (percentage > 64){
+        document.getElementById("grade").innerText = "Grade is:" + " جید";
+    }
+    else if (percentage > 54){
+        document.getElementById("grade").innerText = "Grade is:" + " مقبول";
+    }
+    else if (percentage > 39){
+        document.getElementById("grade").innerText = "Grade is:" + " راسب";
+    }
+    else if (percentage > 0){
+        document.getElementById("grade").innerText = "Grade is:" + " ناکام";
+    }
 }
     </script>
 </body>
