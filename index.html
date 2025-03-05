@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.26);
+    overflow: auto;
+}
+.percentage-calculator{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.452);
+    border-radius: 20px;
+    width: 310px;
+    padding: 20px 0px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input{
+    outline: none;
+    height: 40px;
+    width: 270px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.452);
+    border: none;
+}
+input:focus, button:hover, input:hover{
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
+button{
+    outline: none;
+    height: 40px;
+    width: 270px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgba(53, 53, 53, 0.863);
+    color: white;
+    border: none;
+}
+.output{
+    outline: none;
+    height: 40px;
+    width: 270px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.452);
+}
+
+
+    </style>
+</head>
+
+<body>
+
+    <form action="" class="percentage-calculator">
+        <input type="number" name="physics" id="physics" maxlength="3" placeholder="Enter marks of Physics">
+        <input type="number" name="maths" id="maths" maxlength="3" placeholder="Enter marks of Maths">
+        <input type="number" name="urdu" id="urdu" maxlength="3" placeholder="Enter marks of Urdu">
+        <input type="number" name="english" id="english" maxlength="3" placeholder="Enter marks of English">
+        <input type="number" name="chemistry" id="chemistry" maxlength="3" placeholder="Enter marks of Chemistry">
+        <input type="number" name="computer" id="computer" maxlength="3" placeholder="Enter marks of Computer">
+
+        <button type="button" onclick="getValue()">Submit</button>
+
+
+        <h1 class="output" id="total" placeholder="Total obtained marks is:"></h1>
+        <h1 class="output" id="percentage" placeholder="percentage is:"></h1>
+        <h1 class="output" id="grade" placeholder="Grade is:"></h1>
+    </form>
+
+    <script>
+
+
+
+
+
+
+function getValue() {
+    var phy = Number(document.getElementById("physics").value) || 0;
+    var mth = Number(document.getElementById("maths").value) || 0;
+    var ur = Number(document.getElementById("urdu").value) || 0;
+    var eng = Number(document.getElementById("english").value) || 0;
+    var chem = Number(document.getElementById("chemistry").value) || 0;
+    var comp = Number(document.getElementById("computer").value) || 0;
+
+    var total = phy + mth + ur + eng + chem + comp;
+    var percentage = (total/600)* 100;
+    document.getElementById("total").innerText = total;
+    document.getElementById("percentage").innerText = percentage + "%";
+
+
+    if (percentage > 100 || percentage < 0){
+        document.getElementById("grade").innerText = "You Entered Invalid marks";
+    }
+    else if (percentage > 84 || percentage <= 100){
+        document.getElementById("grade").innerText = "ممتاز";
+    }
+
+}
+    </script>
+</body>
+
+</html>
