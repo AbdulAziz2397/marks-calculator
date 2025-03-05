@@ -86,14 +86,14 @@ button{
 <body>
 
     <form action="" class="percentage-calculator">
-        <input type="number" name="hadar" id="hadar" maxlength="3" placeholder="Enter marks of Hadar">
-        <input type="number" name="urdu" id="urdu" maxlength="3" placeholder="Enter marks of Urdu">
-        <input type="number" name="islamiat" id="islamiat" maxlength="3" placeholder="Enter marks of islamiat">
-        <input type="number" name="physics" id="physics" maxlength="3" placeholder="Enter marks of Physics">
-        <input type="number" name="chemistry" id="chemistry" maxlength="3" placeholder="Enter marks of Chemistry">
-        <input type="number" name="computer" id="computer" maxlength="3" placeholder="Enter marks of Computer">
-        <input type="number" name="english" id="english" maxlength="3" placeholder="Enter marks of English">
-        <input type="number" name="maths" id="maths" maxlength="3" placeholder="Enter marks of Maths">
+        <input type="number" name="hadar" id="hadar" max="100" placeholder="Enter marks of Hadar"  oninput="limitDigits(this)">
+        <input type="number" name="urdu" id="urdu" max="100" placeholder="Enter marks of Urdu"  oninput="limitDigits(this)">
+        <input type="number" name="islamiat" id="islamiat" max="100" placeholder="Enter marks of islamiat"  oninput="limitDigits(this)">
+        <input type="number" name="physics" id="physics" max="100" placeholder="Enter marks of Physics"  oninput="limitDigits(this)">
+        <input type="number" name="chemistry" id="chemistry" max="100" placeholder="Enter marks of Chemistry"  oninput="limitDigits(this)">
+        <input type="number" name="computer" id="computer" max="100" placeholder="Enter marks of Computer"  oninput="limitDigits(this)">
+        <input type="number" name="english" id="english" max="100" placeholder="Enter marks of English"  oninput="limitDigits(this)">
+        <input type="number" name="maths" id="maths" max="100" placeholder="Enter marks of Maths"  oninput="limitDigits(this)">
 
         <button type="button" onclick="getValue()">Submit</button>
 
@@ -104,52 +104,42 @@ button{
     </form>
 
     <script>
-
-
-
-
-
-
-function getValue() {
-    var hdr = Number(document.getElementById("hadar").value) || 0;
-    var ur = Number(document.getElementById("urdu").value) || 0;
-    var islm = Number(document.getElementById("islamiat").value) || 0;
-    var phy = Number(document.getElementById("physics").value) || 0;
-    var chem = Number(document.getElementById("chemistry").value) || 0;
-    var mth = Number(document.getElementById("maths").value) || 0;
-    var eng = Number(document.getElementById("english").value) || 0;
-    var comp = Number(document.getElementById("computer").value) || 0;
-
-    var total = hdr+ ur + islm + phy + chem + comp + eng + mth;
-    var percentage = ((total/800)* 100).toFixed(2);
-    document.getElementById("total").innerText = "Total obtained marks is: " + total;
-    document.getElementById("percentage").innerText = "Percentage is: " + percentage + "%";
-
-
-    if (percentage > 100 || percentage < 0 || phy > 100 || phy < 0 || mth > 100 || mth < 0 || ur > 100 || ur < 0 || eng > 100 || eng < 0 || chem > 100 || chem < 0 || comp > 100 || comp < 0|| hdr > 100 || hdr < 0|| islm > 100 || islm < 0){
-        document.getElementById("grade").innerText = "You Entered Invalid marks!!";
-        document.getElementById("percentage").innerText = "You Entered Invalid marks!!";
-        document.getElementById("total").innerText = "You Entered Invalid marks!!";
-    }
-    else if (percentage >= 85){
-        document.getElementById("grade").innerText = "Grade is:" + " ممتاز";
-    }
-    else if (percentage > 74){
-        document.getElementById("grade").innerText = "Grade is:" + " جید جداً";
-    }
-    else if (percentage > 64){
-        document.getElementById("grade").innerText = "Grade is:" + " جید";
-    }
-    else if (percentage > 54){
-        document.getElementById("grade").innerText = "Grade is:" + " مقبول";
-    }
-    else if (percentage > 39){
-        document.getElementById("grade").innerText = "Grade is:" + " راسب";
-    }
-    else if (percentage >= 0){
-        document.getElementById("grade").innerText = "Grade is:" + " ناکام";
+        function limitDigits(input) {
+    if (input.value.length > 3) {
+        input.value = input.value.slice(0, 3);
     }
 }
+
+        function getValue() {
+            let subjects = ["hadar", "urdu", "islamiat", "physics", "chemistry", "computer", "english", "maths"];
+            let totalMarks = 0;
+            let maxMarks = 100;
+            
+            for (let subject of subjects) {
+                let value = Number(document.getElementById(subject).value) || 0;
+
+                if (value > maxMarks || value < 0) {
+                    alert("Marks should be between 0 and 100!");
+                    return;
+                }
+
+                totalMarks += value;
+            }
+
+            let percentage = ((totalMarks / 800) * 100).toFixed(2);
+            let grade = "";
+
+            if (percentage >= 85) grade = "ممتاز";
+            else if (percentage > 74) grade = "جید جداً";
+            else if (percentage > 64) grade = "جید";
+            else if (percentage > 54) grade = "مقبول";
+            else if (percentage > 39) grade = "راسب";
+            else grade = "ناکام";
+
+            document.getElementById("total").innerText = `Total obtained marks is: ${totalMarks}/800`;
+            document.getElementById("percentage").innerText = `Percentage is: ${percentage}%`;
+            document.getElementById("grade").innerText = `Grade is: ${grade}`;
+        }
     </script>
 </body>
 
