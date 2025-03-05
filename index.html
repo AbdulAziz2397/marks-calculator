@@ -19,12 +19,11 @@
 }
 body{
     width: 100%;
-    height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.26);
     overflow: auto;
+    padding: 30px 0px;
 }
 .percentage-calculator{
     display: flex;
@@ -87,12 +86,14 @@ button{
 <body>
 
     <form action="" class="percentage-calculator">
-        <input type="number" name="physics" id="physics" maxlength="3" placeholder="Enter marks of Physics">
-        <input type="number" name="maths" id="maths" maxlength="3" placeholder="Enter marks of Maths">
+        <input type="number" name="hadar" id="hadar" maxlength="3" placeholder="Enter marks of Hadar">
         <input type="number" name="urdu" id="urdu" maxlength="3" placeholder="Enter marks of Urdu">
-        <input type="number" name="english" id="english" maxlength="3" placeholder="Enter marks of English">
+        <input type="number" name="islamiat" id="islamiat" maxlength="3" placeholder="Enter marks of islamiat">
+        <input type="number" name="physics" id="physics" maxlength="3" placeholder="Enter marks of Physics">
         <input type="number" name="chemistry" id="chemistry" maxlength="3" placeholder="Enter marks of Chemistry">
         <input type="number" name="computer" id="computer" maxlength="3" placeholder="Enter marks of Computer">
+        <input type="number" name="english" id="english" maxlength="3" placeholder="Enter marks of English">
+        <input type="number" name="maths" id="maths" maxlength="3" placeholder="Enter marks of Maths">
 
         <button type="button" onclick="getValue()">Submit</button>
 
@@ -110,20 +111,22 @@ button{
 
 
 function getValue() {
-    var phy = Number(document.getElementById("physics").value) || 0;
-    var mth = Number(document.getElementById("maths").value) || 0;
+    var hdr = Number(document.getElementById("hadar").value) || 0;
     var ur = Number(document.getElementById("urdu").value) || 0;
-    var eng = Number(document.getElementById("english").value) || 0;
+    var islm = Number(document.getElementById("islamiat").value) || 0;
+    var phy = Number(document.getElementById("physics").value) || 0;
     var chem = Number(document.getElementById("chemistry").value) || 0;
+    var mth = Number(document.getElementById("maths").value) || 0;
+    var eng = Number(document.getElementById("english").value) || 0;
     var comp = Number(document.getElementById("computer").value) || 0;
 
-    var total = phy + mth + ur + eng + chem + comp;
+    var total = hdr+ ur + islm + phy + chem + comp + eng + mth;
     var percentage = ((total/600)* 100).toFixed(2);
     document.getElementById("total").innerText = "Total obtained marks is: " + total;
     document.getElementById("percentage").innerText = "Percentage is: " + percentage + "%";
 
 
-    if (percentage > 100 || percentage < 0 || phy > 100 || phy < 0 || mth > 100 || mth < 0 || ur > 100 || ur < 0 || eng > 100 || eng < 0 || chem > 100 || chem < 0 || comp > 100 || comp < 0){
+    if (percentage > 100 || percentage < 0 || phy > 100 || phy < 0 || mth > 100 || mth < 0 || ur > 100 || ur < 0 || eng > 100 || eng < 0 || chem > 100 || chem < 0 || comp > 100 || comp < 0|| hdr > 100 || hdr < 0|| islm > 100 || islm < 0){
         document.getElementById("grade").innerText = "You Entered Invalid marks!!";
         document.getElementById("percentage").innerText = "You Entered Invalid marks!!";
         document.getElementById("total").innerText = "You Entered Invalid marks!!";
