@@ -123,7 +123,7 @@ function getValue() {
     document.getElementById("percentage").innerText = "Percentage is: " + percentage + "%";
 
 
-    if (percentage > 100 || percentage < 0){
+    if (percentage > 100 || percentage < 0 || phy > 100 || phy < 0 || mth > 100 || mth < 0 || ur > 100 || ur < 0 || eng > 100 || eng < 0 || chem > 100 || chem < 0 || comp > 100 || comp < 0){
         document.getElementById("grade").innerText = "You Entered Invalid marks!!";
         document.getElementById("percentage").innerText = "You Entered Invalid marks!!";
         document.getElementById("total").innerText = "You Entered Invalid marks!!";
