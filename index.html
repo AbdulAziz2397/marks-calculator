@@ -137,7 +137,7 @@ button{
         <input type="number" name="islamiat" id="islamiat" max="100" placeholder="اسلامیات"  oninput="limitDigits(this)">
         <input type="number" name="physics" id="physics" max="100" placeholder="طبعیات"  oninput="limitDigits(this)">
         <input type="number" name="chemistry" id="chemistry" max="100" placeholder="کیمیاء"  oninput="limitDigits(this)">
-        <input type="number" name="computer" id="computer" max="100" placeholder="کمپیوٹر"  oninput="limitDigits(this)">
+        <input type="number" name="computer" id="computer" max="100" placeholder="حیاتیات / کمپیوٹر"  oninput="limitDigits(this)">
         <input type="number" name="english" id="english" max="100" placeholder="انگلش"  oninput="limitDigits(this)">
         <input type="number" name="maths" id="maths" max="100" placeholder="ریاضی"  oninput="limitDigits(this)">
 
@@ -178,11 +178,10 @@ button{
             let grade = "";
 
             if (percentage >= 85) grade = "ممتاز";
-            else if (percentage > 74) grade = "جید جداً";
-            else if (percentage > 64) grade = "جید";
-            else if (percentage > 54) grade = "مقبول";
-            else if (percentage > 39) grade = "راسب";
-            else grade = "ناکام";
+            else if (percentage > 69) grade = "جید جداً";
+            else if (percentage > 54) grade = "جید";
+            else if (percentage > 39) grade = "مقبول";
+            else grade = "راسب";
 
             document.getElementById("total").innerText = `کل نمبر: ${totalMarks}`;
             document.getElementById("percentage").innerText = `اوسط نمبر: %${percentage}`;
