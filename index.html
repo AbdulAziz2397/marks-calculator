@@ -37,7 +37,7 @@ body{
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
   margin: 0;
 }
 input{
@@ -51,6 +51,7 @@ input{
     background: rgba(255, 255, 255, 0.452);
     border: none;
     border:2px solid rgba(0, 0, 0, 0.151);
+    text-align: right;
 }
 input:focus, button:hover, input:hover{
     transform: scale(1.1);
@@ -79,6 +80,18 @@ button{
     background: rgba(255, 255, 255, 0.452);
     color: rgba(0, 0, 0, 0.589);
     border:2px solid rgba(0, 0, 0, 0.452);
+    text-align: right;
+}
+.heading{
+    text-align: right;
+    width: 270px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.452);
+    color: rgba(0, 0, 0, 0.589);
+    border:2px solid rgba(0, 0, 0, 0.452);
 }
 
 
@@ -87,22 +100,22 @@ button{
 
 <body>
 
-    <form action="" class="percentage-calculator">
-        <input type="number" name="hadar" id="hadar" max="100" placeholder="Enter marks of Hadar"  oninput="limitDigits(this)">
-        <input type="number" name="urdu" id="urdu" max="100" placeholder="Enter marks of Urdu"  oninput="limitDigits(this)">
-        <input type="number" name="islamiat" id="islamiat" max="100" placeholder="Enter marks of islamiat"  oninput="limitDigits(this)">
-        <input type="number" name="physics" id="physics" max="100" placeholder="Enter marks of Physics"  oninput="limitDigits(this)">
-        <input type="number" name="chemistry" id="chemistry" max="100" placeholder="Enter marks of Chemistry"  oninput="limitDigits(this)">
-        <input type="number" name="computer" id="computer" max="100" placeholder="Enter marks of Computer"  oninput="limitDigits(this)">
-        <input type="number" name="english" id="english" max="100" placeholder="Enter marks of English"  oninput="limitDigits(this)">
-        <input type="number" name="maths" id="maths" max="100" placeholder="Enter marks of Maths"  oninput="limitDigits(this)">
+    <form action="" class="percentage-calculator"> <h1 class="heading">کتب کے حاصل کردہ نمبرات درج زیل خانوں میں درج کریں۔</h1>
+        <input type="number" name="hadar" id="hadar" max="100" placeholder="حدر"  oninput="limitDigits(this)">
+        <input type="number" name="urdu" id="urdu" max="100" placeholder="اردو"  oninput="limitDigits(this)">
+        <input type="number" name="islamiat" id="islamiat" max="100" placeholder="اسلامیات"  oninput="limitDigits(this)">
+        <input type="number" name="physics" id="physics" max="100" placeholder="طبعیات"  oninput="limitDigits(this)">
+        <input type="number" name="chemistry" id="chemistry" max="100" placeholder="کیمیاء"  oninput="limitDigits(this)">
+        <input type="number" name="computer" id="computer" max="100" placeholder="کمپیوٹر"  oninput="limitDigits(this)">
+        <input type="number" name="english" id="english" max="100" placeholder="انگلش"  oninput="limitDigits(this)">
+        <input type="number" name="maths" id="maths" max="100" placeholder="ریاضی"  oninput="limitDigits(this)">
 
         <button type="button" onclick="getValue()">Calculate</button>
 
 
-        <h1 class="output" id="total" placeholder="Total obtained marks is:">Total obtained marks is:</h1>
-        <h1 class="output" id="percentage" placeholder="percentage is:">Percentage is:</h1>
-        <h1 class="output" id="grade" placeholder="Grade is:">Grade is:</h1>
+        <h1 class="output" id="total">کل نمبر</h1>
+        <h1 class="output" id="percentage">اوسط نمبر</h1>
+        <h1 class="output" id="grade">تقدیر</h1>
     </form>
 
     <script>
@@ -138,9 +151,9 @@ button{
             else if (percentage > 39) grade = "راسب";
             else grade = "ناکام";
 
-            document.getElementById("total").innerText = `Total obtained marks is: ${totalMarks}`;
-            document.getElementById("percentage").innerText = `Percentage is: ${percentage}%`;
-            document.getElementById("grade").innerText = `Grade is: ${grade}`;
+            document.getElementById("total").innerText = `کل نمبر: ${totalMarks}`;
+            document.getElementById("percentage").innerText = `اوسط نمبر: %${percentage}`;
+            document.getElementById("grade").innerText = `تقدیر: ${grade}`;
         }
     </script>
 </body>
